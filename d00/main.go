@@ -90,10 +90,10 @@ func findSD(array []int, mean float64) float64 {
 }
 
 func initFlags(flags *Flags) {
-	flag.BoolVar(&flags.mean, "mean", false, "not display")
-	flag.BoolVar(&flags.median, "median", false, "not display")
-	flag.BoolVar(&flags.mode, "mode", false, "not display")
-	flag.BoolVar(&flags.sd, "sd", false, "not display")
+	flag.BoolVar(&flags.mean, "mean", false, "mean display")
+	flag.BoolVar(&flags.median, "median", false, "median display")
+	flag.BoolVar(&flags.mode, "mode", false, "mode display")
+	flag.BoolVar(&flags.sd, "sd", false, "sd display")
 }
 
 func printInfo(array []int, flags Flags) {
