@@ -1,3 +1,4 @@
 You can read 
 input string one 
 character at a time
+4аааассыы ы с м я яя 

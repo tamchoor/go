@@ -28,10 +28,12 @@ func initFlag() int {
 		return L
 	} else if w && !(m || l) {
 		return W
+	} else {
+		fmt.Println("Use only one flag -m/-w/-l whith [filename]")
+		os.Exit(1)
+
 	}
 
-	fmt.Println("Use only one flag -m/-w/-l whith [filename]")
-	os.Exit(1)
 	return 0
 }
 
@@ -44,13 +46,12 @@ func countingInFile(flag int, filename string, wg *sync.WaitGroup) {
 	}
 	defer fileHandle.Close()
 	var count int
+
 	fileScanner := bufio.NewScanner(fileHandle)
 
 	if flag == M {
-		fileScanner.Split(bufio.ScanRunes)
-		for fileScanner.Scan() {
-			count++
-		}
+		file, _ := os.ReadFile(filename)
+		count = len(file)
 		fmt.Printf("%d\t%s\n", count, filename)
 	} else if flag == W {
 		fileScanner.Split(bufio.ScanWords)
@@ -59,6 +60,7 @@ func countingInFile(flag int, filename string, wg *sync.WaitGroup) {
 		}
 		fmt.Printf("%d\t%s\n", count, filename)
 	} else if flag == L {
+
 		fileScanner.Split(bufio.ScanLines)
 		for fileScanner.Scan() {
 			count++
@@ -71,17 +73,16 @@ func countingInFile(flag int, filename string, wg *sync.WaitGroup) {
 }
 
 func main() {
-
 	flags := initFlag()
-
 	var wg sync.WaitGroup
 	var i int
-	for i = range flag.Args() {
-		wg.Add(1)
-		go countingInFile(flags, flag.Args()[i], &wg)
-	}
-	if i == 0 {
+	if len(flag.Args()) != 0 {
+		for i = range flag.Args() {
+			wg.Add(1)
+			go countingInFile(flags, flag.Args()[i], &wg)
+		}
+		wg.Wait()
+	} else {
 		fmt.Println("Use only one flag -m/-w/-l whith [filename]")
 	}
-	wg.Wait()
 }
