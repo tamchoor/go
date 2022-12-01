@@ -1,0 +1,146 @@
+[
+    {
+        "name": "SMETANA",
+        "address": "gorod Moskva, ulitsa Egora Abakumova, dom 9",
+        "phone": "(499) 183-14-10",
+        "location": {
+            "lon": "37.71456500043604",
+            "lat": "55.879001531303366"
+        }
+    },
+    {
+        "name": "Rodnik",
+        "address": "gorod Moskva, ulitsa Talalihina, dom 2/1, korpus 1",
+        "phone": "(495) 676-55-35",
+        "location": {
+            "lon": "37.6733061300344",
+            "lat": "55.7382386551547"
+        }
+    },
+    {
+        "name": "Kafe «Akademija»",
+        "address": "gorod Moskva, Abel'manovskaja ulitsa, dom 6",
+        "phone": "(495) 662-30-10",
+        "location": {
+            "lon": "37.6696475969381",
+            "lat": "55.7355114718314"
+        }
+    },
+    {
+        "name": "Cotto Ital'janskaja Kofejnja",
+        "address": "gorod Moskva, Abramtsevskaja ulitsa, dom 9, korpus 1",
+        "phone": "(499) 200-00-22",
+        "location": {
+            "lon": "37.57230613167112",
+            "lat": "55.90408636984904"
+        }
+    },
+    {
+        "name": "GBOU «Shkola № 1430 imeni Geroja Sotsialisticheskogo Truda G.V. Kisun'ko» Shkola № 1051",
+        "address": "gorod Moskva, Uglichskaja ulitsa, dom 17",
+        "phone": "(499) 908-06-15",
+        "location": {
+            "lon": "37.56694",
+            "lat": "55.90401880066921"
+        }
+    },
+    {
+        "name": "Brusnika",
+        "address": "gorod Moskva, pereulok Sivtsev Vrazhek, dom 6/2",
+        "phone": "(495) 697-04-89",
+        "location": {
+            "lon": "37.59812754843999",
+            "lat": "55.747390490526"
+        }
+    },
+    {
+        "name": "Bufet MTUSI",
+        "address": "gorod Moskva, Aviamotornaja ulitsa, dom 8, stroenie 1",
+        "phone": "(495) 673-89-78",
+        "location": {
+            "lon": "37.71542539189804",
+            "lat": "55.75516375097069"
+        }
+    },
+    {
+        "name": "Stolovaja MTUSI",
+        "address": "gorod Moskva, Aviamotornaja ulitsa, dom 8, stroenie 1",
+        "phone": "(495) 273-89-78",
+        "location": {
+            "lon": "37.71542539189804",
+            "lat": "55.75516375097069"
+        }
+    },
+    {
+        "name": "Kafe Gogieli",
+        "address": "gorod Moskva, Aviamotornaja ulitsa, dom 49/1",
+        "phone": "(495) 361-38-50",
+        "location": {
+            "lon": "37.71995037885907",
+            "lat": "55.749275989276555"
+        }
+    },
+    {
+        "name": "ShKOLA 735",
+        "address": "gorod Moskva, Aviamotornaja ulitsa, dom 51",
+        "phone": "(495) 273-21-06",
+        "location": {
+            "lon": "37.72098869657803",
+            "lat": "55.746325696672486"
+        }
+    },
+    {
+        "name": "Allo Pitstsa",
+        "address": "gorod Moskva, ulitsa Aviatorov, dom 14",
+        "phone": "(495) 934-31-00",
+        "location": {
+            "lon": "37.53328086209287",
+            "lat": "55.51401055012196"
+        }
+    },
+    {
+        "name": "Gimnazija 1542",
+        "address": "gorod Moskva, ulitsa Aviatorov, dom 16",
+        "phone": "(495) 934-87-32",
+        "location": {
+            "lon": "37.533839182416486",
+            "lat": "55.51361335283005"
+        }
+    },
+    {
+        "name": "Shkola 1011",
+        "address": "gorod Moskva, ulitsa Aviatorov, dom 18",
+        "phone": "(495) 934-12-35",
+        "location": {
+            "lon": "37.53468973514791",
+            "lat": "55.51344189360385"
+        }
+    },
+    {
+        "name": "Doner Kebab",
+        "address": "gorod Moskva, Azovskaja ulitsa, dom 4",
+        "phone": "(495) 310-02-20",
+        "location": {
+            "lon": "37.60208371306162",
+            "lat": "55.66040245956391"
+        }
+    },
+    {
+        "name": "Tanuki",
+        "address": "gorod Moskva, Bol'shaja Akademicheskaja ulitsa, dom 65",
+        "phone": "(499) 153-81-44",
+        "location": {
+            "lon": "37.54761",
+            "lat": "55.840266"
+        }
+    },
+    {
+        "name": "Amerikanskaja Laboratorija Desertov",
+        "address": "gorod Moskva, Filippovskij pereulok, dom 15/5",
+        "phone": "(985) 226-02-38",
+        "location": {
+            "lon": "37.598353618148295",
+            "lat": "55.750590675832086"
+        }
+    }
+]
