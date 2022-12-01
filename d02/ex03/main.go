@@ -28,8 +28,10 @@ func createNewFileName(file string, dirFlag string) string {
 		return ""
 	}
 	filename := strings.TrimSuffix(file, filepath.Ext(file))
-	if dirFlag[len(dirFlag)-1] != '/' {
-		dirFlag = dirFlag + "/"
+	if len(dirFlag) != 0 {
+		if dirFlag[len(dirFlag)-1] != '/' {
+			dirFlag = dirFlag + "/"
+		}
 	}
 	filename = dirFlag + filename + "_" + strconv.FormatInt(stat.Mtimespec.Sec, 10) + ".tar.gz"
 	return filename
@@ -71,7 +73,9 @@ func main() {
 	var wg sync.WaitGroup
 	dirFlag := flag.String("a", "", "flag to put file into directory")
 	flag.Parse()
-	checkDir(dirFlag)
+	if len(*dirFlag) != 0 {
+		checkDir(dirFlag)
+	}
 	// fmt.Println("dirFlag -  ", *dirFlag)
 
 	for i := range flag.Args() {
