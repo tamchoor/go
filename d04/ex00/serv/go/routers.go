@@ -49,7 +49,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 var routes = Routes{
 	Route{
-		"Indexxx",
+		"Indexxxxx",
 		"GET",
 		"/",
 		BuyCandy,
