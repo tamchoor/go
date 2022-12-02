@@ -44,7 +44,7 @@ func NewRouter() *mux.Router {
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello World!")
+	fmt.Fprintf(w, "Hello Worlddddd!")
 }
 
 var routes = Routes{
