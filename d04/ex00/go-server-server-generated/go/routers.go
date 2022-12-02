@@ -51,14 +51,14 @@ var routes = Routes{
 	Route{
 		"Index",
 		"GET",
-		"/DEMENTYEVAANASTASIA/ddd/1.0.0/",
+		"/",
 		Index,
 	},
 
 	Route{
 		"BuyCandy",
 		strings.ToUpper("Post"),
-		"/DEMENTYEVAANASTASIA/ddd/1.0.0/buy_candy",
+		"/buy_candy",
 		BuyCandy,
 	},
 }
