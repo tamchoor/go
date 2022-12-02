@@ -64,14 +64,50 @@ func processOrder(order Order) int {
 
 }
 
+func returnResponse400(w http.ResponseWriter) {
+	var response InlineResponse400
+	response.Error_ = "some error in input data!"
+	convertByte, err := json.MarshalIndent(response, "", "    ")
+	if err != nil {
+		fmt.Println("Error MarshalIndent:", err)
+		return
+	}
+	fmt.Fprintf(w, string(convertByte))
+	w.WriteHeader(http.StatusBadRequest)
+}
+
+func returnResponse201(w http.ResponseWriter, change int32) {
+	var response InlineResponse201
+	response.Thanks = "Thank you!"
+	response.Change = change
+	convertByte, err := json.MarshalIndent(response, "", "    ")
+	if err != nil {
+		fmt.Println("Error MarshalIndent:", err)
+		return
+	}
+	fmt.Fprintf(w, string(convertByte))
+	w.WriteHeader(http.StatusCreated)
+}
+
+func returnResponse402(w http.ResponseWriter) {
+	var response InlineResponse402
+	response.Error_ = "Not enough money!"
+	convertByte, err := json.MarshalIndent(response, "", "    ")
+	if err != nil {
+		fmt.Println("Error MarshalIndent:", err)
+		return
+	}
+	fmt.Fprintf(w, string(convertByte))
+	w.WriteHeader(http.StatusPaymentRequired)
+}
+
 func BuyCandy(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	w.WriteHeader(http.StatusOK)
 
 	resBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		fmt.Println("Error ReadAll :", err)
-		fmt.Fprintf(w, `{"some error in input data!"}`)
+		returnResponse400(w)
 		return
 	}
 	fmt.Println(string(resBody))
@@ -79,45 +115,23 @@ func BuyCandy(w http.ResponseWriter, r *http.Request) {
 	err = json.Unmarshal(resBody, &order)
 	if err != nil {
 		fmt.Println("Error Unmarshal :", err)
-		fmt.Fprintf(w, `{"some error in input data!"}`)
+		returnResponse400(w)
 		return
 	}
 
 	if processOrder(order) == 0 {
-		var response InlineResponse400
-		response.Error_ = "some error in input data!"
-		convertByte, err := json.MarshalIndent(response, "", "    ")
-		if err != nil {
-			fmt.Println("Error MarshalIndent:", err)
-			return
-		}
-		fmt.Fprintf(w, string(convertByte))
+		returnResponse400(w)
 		return
 	}
-	fmt.Printf("Money %d\n", order.Money)
-	fmt.Printf("CandyT %s\n", order.CandyType)
-	fmt.Printf("CandyCount %d\n", order.CandyCount)
+	// fmt.Printf("Money %d\n", order.Money)
+	// fmt.Printf("CandyT %s\n", order.CandyType)
+	// fmt.Printf("CandyCount %d\n", order.CandyCount)
 
 	change := countChange(order)
 	if change >= 0 {
-		var response InlineResponse201
-		response.Thanks = "Thank you!"
-		response.Change = change
-		convertByte, err := json.MarshalIndent(response, "", "    ")
-		if err != nil {
-			fmt.Println("Error MarshalIndent:", err)
-			return
-		}
-		fmt.Fprintf(w, string(convertByte))
+		returnResponse201(w, change)
 
 	} else if change < 0 {
-		var response InlineResponse402
-		response.Error_ = "Not enough money!"
-		convertByte, err := json.MarshalIndent(response, "", "    ")
-		if err != nil {
-			fmt.Println("Error MarshalIndent:", err)
-			return
-		}
-		fmt.Fprintf(w, string(convertByte))
+		returnResponse402(w)
 	}
 }
