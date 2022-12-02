@@ -52,7 +52,7 @@ var routes = Routes{
 		"Index",
 		"GET",
 		"/",
-		Index,
+		BuyCandy,
 	},
 
 	Route{

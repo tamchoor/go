@@ -10,10 +10,14 @@
 package swagger
 
 import (
+	"fmt"
 	"net/http"
 )
 
 func BuyCandy(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
+	fmt.Printf("AAAAAAAAAAAAAA")
+	fmt.Fprintf(w, `{"message": "hello!"}`)
+
 }
