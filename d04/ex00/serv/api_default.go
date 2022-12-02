@@ -14,6 +14,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 )
 
 const (
@@ -89,9 +90,9 @@ func returnResponse201(w http.ResponseWriter, change int32) {
 	w.WriteHeader(http.StatusCreated)
 }
 
-func returnResponse402(w http.ResponseWriter) {
+func returnResponse402(w http.ResponseWriter, change int32) {
 	var response InlineResponse402
-	response.Error_ = "Not enough money!"
+	response.Error_ = "You need " + strconv.Itoa(int(-change)) + " more money!"
 	convertByte, err := json.MarshalIndent(response, "", "    ")
 	if err != nil {
 		fmt.Println("Error MarshalIndent:", err)
@@ -110,7 +111,6 @@ func BuyCandy(w http.ResponseWriter, r *http.Request) {
 		returnResponse400(w)
 		return
 	}
-	fmt.Println(string(resBody))
 	var order Order
 	err = json.Unmarshal(resBody, &order)
 	if err != nil {
@@ -132,6 +132,6 @@ func BuyCandy(w http.ResponseWriter, r *http.Request) {
 		returnResponse201(w, change)
 
 	} else if change < 0 {
-		returnResponse402(w)
+		returnResponse402(w, change)
 	}
 }
