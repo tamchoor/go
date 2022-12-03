@@ -38,6 +38,7 @@ func createNewFileName(file string, dirFlag string) string {
 }
 
 func makeArh(file string, oldfile string, wg *sync.WaitGroup) {
+	defer wg.Done()
 	arhive, err := os.Create(file)
 	if err != nil {
 		fmt.Println("4", err)
@@ -46,7 +47,6 @@ func makeArh(file string, oldfile string, wg *sync.WaitGroup) {
 	defer arhive.Close()
 	arh := tar.NewWriter(arhive)
 	defer arh.Close()
-	defer wg.Done()
 	bytes, err := os.ReadFile(oldfile)
 	if err != nil {
 		fmt.Println("3", err)
@@ -83,7 +83,7 @@ func main() {
 		// fmt.Println("f  ", flag.Args()[i])
 		filename := createNewFileName(flag.Args()[i], *dirFlag)
 		// fmt.Println("f  ", filename)
-		makeArh(filename, flag.Args()[i], &wg)
+		go makeArh(filename, flag.Args()[i], &wg)
 	}
 	wg.Wait()
 }
