@@ -73,8 +73,8 @@ func returnResponse400(w http.ResponseWriter) {
 		fmt.Println("Error MarshalIndent:", err)
 		return
 	}
-	fmt.Fprintf(w, string(convertByte))
 	w.WriteHeader(http.StatusBadRequest)
+	fmt.Fprintf(w, string(convertByte))
 }
 
 func returnResponse201(w http.ResponseWriter, change int32) {
@@ -86,8 +86,8 @@ func returnResponse201(w http.ResponseWriter, change int32) {
 		fmt.Println("Error MarshalIndent:", err)
 		return
 	}
-	fmt.Fprintf(w, string(convertByte))
 	w.WriteHeader(http.StatusCreated)
+	fmt.Fprintf(w, string(convertByte))
 }
 
 func returnResponse402(w http.ResponseWriter, change int32) {
@@ -98,11 +98,12 @@ func returnResponse402(w http.ResponseWriter, change int32) {
 		fmt.Println("Error MarshalIndent:", err)
 		return
 	}
-	fmt.Fprintf(w, string(convertByte))
 	w.WriteHeader(http.StatusPaymentRequired)
+	fmt.Fprintf(w, string(convertByte))
 }
 
 func BuyCandy(w http.ResponseWriter, r *http.Request) {
+
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
 	resBody, err := ioutil.ReadAll(r.Body)
