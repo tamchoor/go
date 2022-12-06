@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"golang.org/x/image/font"
 	"golang.org/x/image/font/basicfont"
+	// "golang.org/x/image/font/inconsolata"
+	// "golang.org/x/image/font/gofont/gomonobold"
+	// gofont/gomonobold
 	"golang.org/x/image/math/fixed"
 	"image"
 	"image/color"
@@ -45,19 +48,23 @@ func (s *Scene) Save(filename string) {
 func addLabel(img *image.RGBA, x, y int, label string) {
 	col := color.RGBA{250, 250, 250, 255}
 	point := fixed.Point26_6{fixed.I(x), fixed.I(y)}
+	face := basicfont.Face7x13
+	// face := inconsolata.Regular8x16
+	// face := gofont.gomonobold
+	// face.Width = 100
 
 	d := &font.Drawer{
 		Dst:  img,
 		Src:  image.NewUniform(col),
-		Face: basicfont.Face7x13,
+		Face: face,
 		Dot:  point,
 	}
 	d.DrawString(label)
 }
 
 func main() {
-	var width = 100
-	var height = 100
+	var width = 300
+	var height = 300
 	scene := NewScene(width, height)
 	scene.EachPixel(func(x, y int) color.RGBA {
 		return color.RGBA{
@@ -67,6 +74,6 @@ func main() {
 			255,
 		}
 	})
-	addLabel(scene.Img, 22, 50, "Tamchoor")
+	addLabel(scene.Img, 120, 150, "Tamchoor")
 	scene.Save("amazing_logo.png")
 }

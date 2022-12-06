@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tamchoor blog</title>
+</head>
+<body>
+	<h1>Tamchoor blog</h1>
+	<img src="cats.jpeg" alt="logo">
+	<ul>
+		{{range .Posts}}
+		<li><b>{{ .Id }}</b></li>
+		<b>{{ .Title }}</b></li>
+			{{if ne .Content ""}}
+			<li><b>{{ .Content }}</b></li>
+			{{else}}
+			<li><b>!!!! нет контента</b></li>
+			{{end}}
+		{{else}}
+		<li><b>This blog is empty</b></li>
+
+		{{end}}
+	</ul>
+</body>
+</html>
