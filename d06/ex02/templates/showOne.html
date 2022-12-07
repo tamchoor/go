@@ -1,0 +1,22 @@
+{{ define "content" }}
+<div class="container">
+    <p> One Posts</p>
+</div>
+<table class="table">
+	<thead class="thead-dark">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Content</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="col">{{ .Id }}</th>
+			<th scope="col"> {{ .Title }} </th>
+			<th scope="col"> {{ .Content }} <td>
+		</tr>
+	</tbody>
+</table>
+<a href="/">Back</a>
+{{ end }}

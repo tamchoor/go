@@ -1,25 +1,20 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"github.com/go-pg/pg"
 	"github.com/gorilla/context"
-	// "golang.org/x/time/rate"
-	// "github.com/go-pg/pg/orm"
-	"bufio"
 	"html/template"
 	"net/http"
 	"os"
 	"strconv"
 )
 
-// var limiter = rate.NewLimiter(1, 3)
-
 type Post struct {
 	Id      int64
 	Title   string
 	Content string
-	// AuthorEmail string
 }
 
 func adminPage(w http.ResponseWriter, r *http.Request) {
@@ -61,15 +56,8 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 	for countPosts = range posts {
 	}
 
-	// fmt.Println("countPosts = ", countPosts)
 	countPosts++
 	pages := countPosts/3 + 1
-	// fmt.Println("pages = ", pages)
-	// nId, err := strconv.ParseInt(r.URL.Query().Get("id"), 10, 64)
-
-	// if nId > 0{
-
-	// }
 	var posts1 []Post
 	var pg []int = make([]int, pages)
 
@@ -80,8 +68,6 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		nId = 0
 	}
-	// fmt.Println("nId = ", nId)
-	// fmt.Println("len = ", len(posts))
 	if len(posts) > 0+(int(nId)*3) {
 		posts1 = append(posts1, posts[0+(nId*3)])
 	}
@@ -91,15 +77,10 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 	if len(posts) > 2+(int(nId)*3) {
 		posts1 = append(posts1, posts[2+(nId*3)])
 	}
-	// posts1 = append(posts1, posts[0+(nId*3)], posts[1+(nId*3)], posts[2+(nId*3)])
 	extra := struct {
 		Posts []Post
 		Pages []int
 	}{Posts: posts1, Pages: pg}
-	// _ = pg
-	// extra := struct {
-	// 	Posts []Post
-	// }{Posts: posts1}
 	tmpl.Execute(w, extra)
 }
 
@@ -148,7 +129,6 @@ func showPage(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 	}
-	// fmt.Fprintf(w, "nid =  %d", nId)
 
 	tmpl, err := template.ParseFiles("templates/homePage.html", "templates/showOne.html")
 	if err != nil {
@@ -189,7 +169,6 @@ func loginPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func loginCheck(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("rrrrr")
 	if r.Method == "POST" {
 		login := r.FormValue("login")
 		passw := r.FormValue("passw")
@@ -243,9 +222,6 @@ func newPostInsert(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	// DeleteContentInDB()
-	// addContentInDB()
-
 	http.Handle("/templates/", http.StripPrefix("/templates/", http.FileServer(http.Dir("./templates"))))
 	http.HandleFunc("/", homePage)
 	http.HandleFunc("/show", showPage)
