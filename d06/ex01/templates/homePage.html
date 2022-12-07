@@ -8,20 +8,10 @@
 </head>
 <body>
 	<h1>Tamchoor blog</h1>
-	<img src="cats.jpeg" alt="logo">
-	<ul>
-		{{range .Posts}}
-		<li><b>{{ .Id }}</b></li>
-		<b>{{ .Title }}</b></li>
-			{{if ne .Content ""}}
-			<li><b>{{ .Content }}</b></li>
-			{{else}}
-			<li><b>!!!! нет контента</b></li>
-			{{end}}
-		{{else}}
-		<li><b>This blog is empty</b></li>
+	<img src="templates/amazing_logo.png" alt="logo">
 
-		{{end}}
-	</ul>
+	<div class="container">
+		{{ block "content" . }}{{ end }}
+	</div>
 </body>
 </html>

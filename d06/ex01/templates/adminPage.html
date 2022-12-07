@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tamchoor blog</title>
+</head>
+<body>
+	<h1>Tamchoor blog</h1>
+	<img src="templates/amazing_logo.png" alt="logo">
+
+	<b><a href="/admin/newPost"> NEW POST </a></b>
+	<div class="container">
+		{{ block "content" . }}{{ end }}
+	</div>
+</body>
+</html>
