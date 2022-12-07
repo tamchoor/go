@@ -49,9 +49,6 @@ func addLabel(img *image.RGBA, x, y int, label string) {
 	col := color.RGBA{250, 250, 250, 255}
 	point := fixed.Point26_6{fixed.I(x), fixed.I(y)}
 	face := basicfont.Face7x13
-	// face := inconsolata.Regular8x16
-	// face := gofont.gomonobold
-	// face.Width = 100
 
 	d := &font.Drawer{
 		Dst:  img,

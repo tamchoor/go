@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/go-pg/pg"
 	"github.com/gorilla/context"
+	// "golang.org/x/time/rate"
 	// "github.com/go-pg/pg/orm"
 	"bufio"
 	"html/template"
@@ -11,6 +12,8 @@ import (
 	"os"
 	"strconv"
 )
+
+// var limiter = rate.NewLimiter(1, 3)
 
 type Post struct {
 	Id      int64
@@ -53,9 +56,50 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
+	var countPosts int
+
+	for countPosts = range posts {
+	}
+
+	// fmt.Println("countPosts = ", countPosts)
+	countPosts++
+	pages := countPosts/3 + 1
+	// fmt.Println("pages = ", pages)
+	// nId, err := strconv.ParseInt(r.URL.Query().Get("id"), 10, 64)
+
+	// if nId > 0{
+
+	// }
+	var posts1 []Post
+	var pg []int = make([]int, pages)
+
+	for i := 0; i < pages; i++ {
+		pg[i] = i
+	}
+	nId, err := strconv.ParseInt(r.URL.Query().Get("id"), 10, 64)
+	if err != nil {
+		nId = 0
+	}
+	// fmt.Println("nId = ", nId)
+	// fmt.Println("len = ", len(posts))
+	if len(posts) > 0+(int(nId)*3) {
+		posts1 = append(posts1, posts[0+(nId*3)])
+	}
+	if len(posts) > 1+(int(nId)*3) {
+		posts1 = append(posts1, posts[1+(nId*3)])
+	}
+	if len(posts) > 2+(int(nId)*3) {
+		posts1 = append(posts1, posts[2+(nId*3)])
+	}
+	// posts1 = append(posts1, posts[0+(nId*3)], posts[1+(nId*3)], posts[2+(nId*3)])
 	extra := struct {
 		Posts []Post
-	}{Posts: posts}
+		Pages []int
+	}{Posts: posts1, Pages: pg}
+	// _ = pg
+	// extra := struct {
+	// 	Posts []Post
+	// }{Posts: posts1}
 	tmpl.Execute(w, extra)
 }
 
@@ -97,7 +141,6 @@ func addContentInDB() {
 	if err != nil {
 		panic(err)
 	}
-
 }
 
 func showPage(w http.ResponseWriter, r *http.Request) {
