@@ -68,3 +68,23 @@ func MinCoins2(val int, coins []int) []int {
 	}
 	return []int{}
 }
+
+func MinCoins2Optimize(val int, coins []int) []int {
+	if len(coins) == 0 || checkZero(coins) == false {
+		return []int{}
+	}
+	sort.Ints(coins)
+	var resSave, resCorrect []int
+	resSave = []int{}
+	for i := 0; i < len(coins); i++ {
+		resCorrect = MinCoins(val, coins[:len(coins)-i])
+		if countSumm(resCorrect) == val {
+			if len(resSave) == 0 {
+				resSave = resCorrect
+			} else if len(resSave) > len(resCorrect) {
+				resSave = resCorrect
+			}
+		}
+	}
+	return resSave
+}

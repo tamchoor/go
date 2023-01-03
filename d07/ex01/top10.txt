@@ -1,0 +1,10 @@
+BenchmarkMinCoins26-8 2.542
+BenchmarkMinCoins26Optimize-8 2.542
+BenchmarkMinCoins27-8 2.375
+BenchmarkMinCoins27Optimize-8 2.500
+BenchmarkMinCoins24Optimize-8 217.9
+BenchmarkMinCoins23Optimize-8 219.2
+BenchmarkMinCoins20Optimize-8 297.1
+BenchmarkMinCoins21Optimize-8 297.0
+BenchmarkMinCoins24-8 305.5
+BenchmarkMinCoins25Optimize-8 342.0
