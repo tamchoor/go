@@ -1,10 +1,14 @@
-BenchmarkMinCoins26-8 2.542
-BenchmarkMinCoins26Optimize-8 2.542
-BenchmarkMinCoins27-8 2.375
-BenchmarkMinCoins27Optimize-8 2.500
-BenchmarkMinCoins24Optimize-8 217.9
-BenchmarkMinCoins23Optimize-8 219.2
-BenchmarkMinCoins20Optimize-8 297.1
-BenchmarkMinCoins21Optimize-8 297.0
-BenchmarkMinCoins24-8 305.5
-BenchmarkMinCoins25Optimize-8 342.0
+Showing nodes accounting for 3800ms, 67.38% of 5640ms total
+Dropped 36 nodes (cum <= 28.20ms)
+Showing top 10 nodes out of 110
+      flat  flat%   sum%        cum   cum%
+    1510ms 26.77% 26.77%     1510ms 26.77%  runtime.kevent
+     490ms  8.69% 35.46%      740ms 13.12%  runtime.mallocgc
+     370ms  6.56% 42.02%     1380ms 24.47%  flag.(*FlagSet).parseOne
+     280ms  4.96% 46.99%      280ms  4.96%  runtime.madvise
+     270ms  4.79% 51.77%      410ms  7.27%  runtime.mapaccess2_faststr
+     270ms  4.79% 56.56%      270ms  4.79%  runtime.pthread_cond_wait
+     230ms  4.08% 60.64%      900ms 15.96%  runtime.growslice
+     140ms  2.48% 63.12%      140ms  2.48%  runtime.pthread_kill
+     130ms  2.30% 65.43%      210ms  3.72%  runtime.mapassign_faststr
+     110ms  1.95% 67.38%      110ms  1.95%  memeqbody
